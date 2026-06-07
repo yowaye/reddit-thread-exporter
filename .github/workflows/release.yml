@@ -1,0 +1,49 @@
+name: Build & Release Chrome Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version from manifest.json
+        id: version
+        run: |
+          VERSION=$(grep '"version"' manifest.json | sed 's/.*"version": "\(.*\)".*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "zip=reddit-thread-exporter-v${VERSION}.zip" >> $GITHUB_OUTPUT
+
+      - name: Build zip (extension files only)
+        run: |
+          zip -r "${{ steps.version.outputs.zip }}" \
+            manifest.json \
+            content.js \
+            popup.js \
+            popup.html \
+            styles.css \
+            icons/ \
+            _locales/ \
+            --exclude "*.DS_Store"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Reddit Thread Exporter v${{ steps.version.outputs.version }}"
+          body: |
+            ## Reddit Thread Exporter v${{ steps.version.outputs.version }}
+
+            ### 安装方法
+            1. 下载下方的 `.zip` 文件并解压
+            2. 打开 Chrome，进入 `chrome://extensions/`
+            3. 开启「开发者模式」
+            4. 点击「加载已解压的扩展程序」，选择解压后的文件夹
+          files: ${{ steps.version.outputs.zip }}

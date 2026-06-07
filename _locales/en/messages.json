@@ -1,0 +1,48 @@
+{
+  "appName":           { "message": "Reddit Thread Exporter",                           "description": "Extension name" },
+  "appDesc":           { "message": "Export any Reddit thread to Markdown in one click", "description": "Extension description" },
+
+  "optImages":         { "message": "Include Images",              "description": "Checkbox label" },
+  "optComments":       { "message": "Include Comments",            "description": "Checkbox label" },
+  "optHierarchy":      { "message": "Preserve Hierarchy",          "description": "Checkbox label" },
+  "optAutoScrape":     { "message": "Auto-scrape on Page Open",    "description": "Checkbox label" },
+  "btnExport":         { "message": "Export Markdown",             "description": "Primary button" },
+  "btnCopy":           { "message": "Copy to Clipboard",           "description": "Secondary button" },
+  "previewTitle":      { "message": "Preview",                     "description": "Preview panel heading" },
+  "footer":            { "message": "DOM-only · No network requests · All data stays local", "description": "Footer note" },
+
+  "statusWaiting":     { "message": "Waiting...",                  "description": "" },
+  "statusReady":       { "message": "Ready — click to extract",    "description": "" },
+  "statusManual":      { "message": "Manual mode — click to extract", "description": "" },
+  "statusLoading":     { "message": "Parsing page...",             "description": "" },
+  "statusAutoScraped": { "message": "Auto-scraped · $1",           "description": "$1 = age string" },
+  "statusCacheOld":    { "message": "Cache outdated ($1) — will refresh on export", "description": "$1 = age string" },
+  "statusCopied":      { "message": "Copied ($1 chars)",           "description": "$1 = character count" },
+  "statusSaved":       { "message": "Saved: $1",                   "description": "$1 = filename" },
+  "statusNotReddit":   { "message": "Please open a Reddit thread first", "description": "" },
+
+  "errorNoTab":        { "message": "Cannot get current tab",      "description": "" },
+  "errorNotReddit":    { "message": "Please use this on a Reddit thread page", "description": "" },
+  "errorNoTitle":      { "message": "Could not read post title — please confirm this is a Reddit thread", "description": "" },
+  "errorNotReady":     { "message": "Content script not ready — please refresh the page", "description": "" },
+  "errorParseFailed":  { "message": "Page parsing failed",         "description": "" },
+  "errorDownloadFailed": { "message": "Download failed",           "description": "" },
+  "errorCopyFailed":   { "message": "Copy failed — please select and copy manually", "description": "" },
+
+  "ageSeconds":        { "message": "$1s ago",   "description": "$1 = seconds" },
+  "ageMinutes":        { "message": "$1m ago",   "description": "$1 = minutes" },
+  "previewTruncated":  { "message": "…(truncated)", "description": "" },
+
+  "mdField":           { "message": "Field",    "description": "Markdown table header" },
+  "mdValue":           { "message": "Value",    "description": "Markdown table header" },
+  "mdAuthor":          { "message": "Author",   "description": "" },
+  "mdDate":            { "message": "Posted",   "description": "" },
+  "mdScore":           { "message": "Score",    "description": "" },
+  "mdCommentCount":    { "message": "Comments", "description": "" },
+  "mdLink":            { "message": "URL",      "description": "" },
+  "mdBody":            { "message": "Content",  "description": "" },
+  "mdImages":          { "message": "Images",   "description": "" },
+  "mdComments":        { "message": "Comments", "description": "" },
+  "mdImageAlt":        { "message": "Image",    "description": "Alt text prefix" },
+  "mdScoreUnit":       { "message": "pts",      "description": "Score unit" }
+}

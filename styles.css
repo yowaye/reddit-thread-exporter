@@ -1,0 +1,306 @@
+/* styles.css — Reddit Thread Exporter · YoWaye */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #1a1a1b;
+  --bg-card: #272729;
+  --bg-hover: #333335;
+  --border: #343536;
+  --accent: #FF4500;
+  --accent-hover: #e03d00;
+  --accent2: #7193ff;
+  --text: #d7dadc;
+  --text-dim: #818384;
+  --text-dimmer: #585858;
+  --success: #46d160;
+  --error: #ff585b;
+  --radius: 6px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  width: 320px;
+  min-height: 200px;
+  line-height: 1.5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+h1 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  flex: 1;              /* takes remaining space, pushes btn-lang right */
+  min-width: 0;
+}
+
+/* Language toggle button — sits at the far right of the header */
+.btn-lang {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: border-color .15s, color .15s;
+}
+
+.btn-lang:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+/* ── Status bar ─────────────────────────────────────────────────── */
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 12px;
+  color: var(--text-dim);
+  min-height: 36px;
+  transition: border-color .2s, color .2s;
+}
+
+.status-idle    { border-color: var(--border); }
+.status-loading { border-color: var(--accent2); color: var(--accent2); }
+.status-success { border-color: var(--success); color: var(--success); }
+.status-error   { border-color: var(--error);   color: var(--error); }
+.status-copy    { border-color: var(--success);  color: var(--success); }
+.status-cache   { border-color: var(--accent2);  color: var(--accent2); }
+
+#status-icon {
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+#status-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Options ────────────────────────────────────────────────────── */
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 2px 0;
+  user-select: none;
+  color: var(--text);
+}
+
+.checkbox-row input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg);
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color .15s, background .15s;
+}
+
+.checkbox-row input:checked + .checkmark {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox-row input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.checkbox-row:hover .checkmark { border-color: var(--accent); }
+
+#hierarchy-row { padding-left: 16px; }
+
+#hierarchy-row.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.options-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 2px 0;
+}
+
+/* ── Action buttons ─────────────────────────────────────────────── */
+
+.actions { display: flex; gap: 8px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .1s, opacity .15s;
+  flex: 1;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn:active { transform: scale(.97); }
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover:not(:disabled) { background: var(--bg-hover); }
+
+/* ── Preview ────────────────────────────────────────────────────── */
+
+.preview-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.preview-section.hidden { display: none; }
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--bg-hover);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.btn-icon:hover { background: var(--border); color: var(--text); }
+
+#preview-content {
+  padding: 10px;
+  font-size: 11px;
+  font-family: "SF Mono", "Fira Code", Consolas, monospace;
+  color: var(--text-dim);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+#preview-content::-webkit-scrollbar { width: 4px; }
+#preview-content::-webkit-scrollbar-track { background: transparent; }
+#preview-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-dimmer);
+  padding-top: 2px;
+  flex-wrap: wrap;
+}
+
+.footer-brand a {
+  color: var(--text-dimmer);
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.footer-brand a:hover { color: var(--accent); }

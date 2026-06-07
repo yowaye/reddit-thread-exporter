@@ -1,0 +1,48 @@
+{
+  "appName":           { "message": "Reddit 帖子导出工具",                              "description": "Extension name shown in Chrome and the Web Store" },
+  "appDesc":           { "message": "一键提取 Reddit 帖子完整内容，导出 Markdown 文件", "description": "Extension description" },
+
+  "optImages":         { "message": "包含图片链接",             "description": "Checkbox label" },
+  "optComments":       { "message": "包含评论",                 "description": "Checkbox label" },
+  "optHierarchy":      { "message": "保留评论层级",             "description": "Checkbox label" },
+  "optAutoScrape":     { "message": "页面打开后自动抓取",        "description": "Checkbox label" },
+  "btnExport":         { "message": "导出 Markdown",            "description": "Primary button" },
+  "btnCopy":           { "message": "复制到剪贴板",             "description": "Secondary button" },
+  "previewTitle":      { "message": "预览",                     "description": "Preview panel heading" },
+  "footer":            { "message": "仅读取页面 DOM · 无网络请求 · 数据留在本地", "description": "Footer note" },
+
+  "statusWaiting":     { "message": "等待操作...",              "description": "Initial idle state" },
+  "statusReady":       { "message": "就绪，点击按钮开始提取",   "description": "Ready, no cache" },
+  "statusManual":      { "message": "手动模式 · 点击按钮开始提取", "description": "Manual scrape mode" },
+  "statusLoading":     { "message": "正在解析页面...",           "description": "Scraping in progress" },
+  "statusAutoScraped": { "message": "已自动抓取 · $1",          "description": "$1 = age string" },
+  "statusCacheOld":    { "message": "缓存较旧 ($1)，导出时将重新抓取", "description": "$1 = age string" },
+  "statusCopied":      { "message": "已复制 ($1 字符)",          "description": "$1 = character count" },
+  "statusSaved":       { "message": "已保存: $1",               "description": "$1 = filename" },
+  "statusNotReddit":   { "message": "请打开 Reddit 帖子详情页后使用", "description": "Wrong page" },
+
+  "errorNoTab":        { "message": "无法获取当前标签页",        "description": "" },
+  "errorNotReddit":    { "message": "请在 Reddit 帖子页面使用此插件", "description": "" },
+  "errorNoTitle":      { "message": "未能读取帖子标题，请确认当前页面是 Reddit 帖子详情页", "description": "" },
+  "errorNotReady":     { "message": "内容脚本未就绪，请刷新页面后重试", "description": "" },
+  "errorParseFailed":  { "message": "解析页面失败",             "description": "" },
+  "errorDownloadFailed": { "message": "下载失败",               "description": "" },
+  "errorCopyFailed":   { "message": "复制失败，请手动选中内容复制", "description": "" },
+
+  "ageSeconds":        { "message": "$1 秒前",                  "description": "$1 = seconds" },
+  "ageMinutes":        { "message": "$1 分钟前",                "description": "$1 = minutes" },
+  "previewTruncated":  { "message": "…(已截断)",               "description": "" },
+
+  "mdField":           { "message": "字段",   "description": "Markdown table header" },
+  "mdValue":           { "message": "值",     "description": "Markdown table header" },
+  "mdAuthor":          { "message": "作者",   "description": "" },
+  "mdDate":            { "message": "发布时间", "description": "" },
+  "mdScore":           { "message": "评分",   "description": "" },
+  "mdCommentCount":    { "message": "评论数", "description": "" },
+  "mdLink":            { "message": "链接",   "description": "" },
+  "mdBody":            { "message": "正文",   "description": "" },
+  "mdImages":          { "message": "图片",   "description": "" },
+  "mdComments":        { "message": "评论",   "description": "" },
+  "mdImageAlt":        { "message": "图片",   "description": "Alt text prefix for images" },
+  "mdScoreUnit":       { "message": "分",     "description": "Score unit" }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reddit Thread Exporter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+
+      <header>
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="10" fill="#FF4500"/>
+            <path d="M16.67 10a1.46 1.46 0 00-2.47-1 7.12 7.12 0 00-3.85-1.23l.65-3.08 2.13.45a1 1 0 102.03-.1 1 1 0 00-1.9.47l-2.38-.5a.25.25 0 00-.3.19l-.73 3.43a7.14 7.14 0 00-3.82 1.23 1.46 1.46 0 10-1.6 2.39 2.87 2.87 0 000 .38c0 1.94 2.26 3.5 5.05 3.5s5.05-1.57 5.05-3.5a2.87 2.87 0 000-.38 1.46 1.46 0 00.65-1.25zM8 11a1 1 0 111 1 1 1 0 01-1-1zm5.54 2.65a3.54 3.54 0 01-2.54.78 3.54 3.54 0 01-2.54-.78.25.25 0 01.35-.35 3.07 3.07 0 002.19.63 3.07 3.07 0 002.19-.63.25.25 0 01.35.35zM12 12a1 1 0 111-1 1 1 0 01-1 1z" fill="white"/>
+          </svg>
+        </div>
+        <!-- data-i18n applied by popup.js at runtime -->
+        <h1 data-i18n="appName">Reddit Thread Exporter</h1>
+        <button id="btn-lang" class="btn-lang" title="Switch language">EN</button>
+      </header>
+
+      <div id="status" class="status status-idle">
+        <span id="status-icon">⬜</span>
+        <span id="status-text" data-i18n="statusWaiting">等待操作...</span>
+      </div>
+
+      <section class="options">
+        <label class="checkbox-row">
+          <input type="checkbox" id="opt-images" checked />
+          <span class="checkmark"></span>
+          <span data-i18n="optImages">包含图片链接</span>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="opt-comments" checked />
+          <span class="checkmark"></span>
+          <span data-i18n="optComments">包含评论</span>
+        </label>
+        <label class="checkbox-row" id="hierarchy-row">
+          <input type="checkbox" id="opt-hierarchy" checked />
+          <span class="checkmark"></span>
+          <span data-i18n="optHierarchy">保留评论层级</span>
+        </label>
+      </section>
+
+      <div class="actions">
+        <button id="btn-export" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span data-i18n="btnExport">导出 Markdown</span>
+        </button>
+        <button id="btn-copy" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+          </svg>
+          <span data-i18n="btnCopy">复制到剪贴板</span>
+        </button>
+      </div>
+
+      <div id="preview-section" class="preview-section hidden">
+        <div class="preview-header">
+          <span data-i18n="previewTitle">预览</span>
+          <button id="btn-close-preview" class="btn-icon">✕</button>
+        </div>
+        <pre id="preview-content"></pre>
+      </div>
+
+      <footer>
+        <span data-i18n="footer">仅读取页面 DOM · 无网络请求 · 数据留在本地</span>
+        <span class="footer-brand">· <a href="https://yowaye.com" target="_blank">YoWaye</a></span>
+      </footer>
+
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
